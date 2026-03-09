@@ -65,7 +65,7 @@ También puedes ejecutarlo manualmente desde la pestaña **Actions** en GitHub.
 
 ## 📊 Fuentes de datos
 
-- **BCV (Banco Central de Venezuela)**: https://www.bcv.org.ve/
+- **BCV (Banco Central de Venezuela)**: API pyDolarVenezuela (https://pydolarvenezuela-api.vercel.app/) para evitar errores 403.
 - **Binance P2P**: API pública de anuncios P2P USDT/VES
 
 ## ⚠️ Importante

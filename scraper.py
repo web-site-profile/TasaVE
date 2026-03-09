@@ -8,7 +8,6 @@ Generates data.json for the webapp
 
 import json
 import requests
-from bs4 import BeautifulSoup
 from datetime import datetime
 import time
 import sys
@@ -22,71 +21,17 @@ if sys.platform == 'win32':
 
 def get_bcv_rates():
     """
-    Scrape BCV official rates for USD and EUR
+    Fetch BCV official rates for USD and EUR using pydolarvenezuela-api
     Returns: dict with bcv_usd and bcv_eur
     """
     try:
-        url = "https://www.bcv.org.ve/"
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-        }
+        url = "https://pydolarvenezuela-api.vercel.app/api/v1/dollar/page?page=bcv"
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()
+        data = response.json()
         
-        # Try with SSL verification first
-        try:
-            response = requests.get(url, headers=headers, timeout=15)
-            response.raise_for_status()
-        except requests.exceptions.SSLError:
-            # If SSL fails, try without verification (for GitHub Actions)
-            print("SSL verification failed, retrying without verification...")
-            import urllib3
-            urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-            response = requests.get(url, headers=headers, timeout=15, verify=False)
-            response.raise_for_status()
-        
-        soup = BeautifulSoup(response.content, 'html.parser')
-        
-        # BCV website structure - find the exchange rates using specific IDs
-        # The BCV website uses #dolar and #euro containers
-        usd_rate = None
-        eur_rate = None
-        
-        try:
-            import re
-            
-            # Method 1: Use specific ID selectors (most reliable)
-            # USD rate from #dolar container
-            dolar_div = soup.find('div', id='dolar')
-            if dolar_div:
-                strong_tag = dolar_div.find('strong')
-                if strong_tag:
-                    rate_text = strong_tag.get_text().strip()
-                    # Remove spaces and convert comma to dot
-                    rate_text = rate_text.replace(' ', '').replace(',', '.')
-                    try:
-                        usd_rate = float(rate_text)
-                    except ValueError:
-                        pass
-            
-            # EUR rate from #euro container
-            euro_div = soup.find('div', id='euro')
-            if euro_div:
-                strong_tag = euro_div.find('strong')
-                if strong_tag:
-                    rate_text = strong_tag.get_text().strip()
-                    # Remove spaces and convert comma to dot
-                    rate_text = rate_text.replace(' ', '').replace(',', '.')
-                    try:
-                        eur_rate = float(rate_text)
-                    except ValueError:
-                        pass
-        
-        except Exception as e:
-            print(f"Error parsing BCV HTML: {e}")
-        
-        # If we still don't have rates, return None
-        if not usd_rate or not eur_rate:
-            print("Warning: Could not extract BCV rates from HTML")
-            return None
+        usd_rate = float(data['monitors']['usd']['price'])
+        eur_rate = float(data['monitors']['eur']['price'])
         
         return {
             'bcv_usd': usd_rate,
@@ -95,7 +40,10 @@ def get_bcv_rates():
         
     except Exception as e:
         print(f"Error fetching BCV rates: {e}")
-        return None
+        return {
+            'bcv_usd': 0.0,
+            'bcv_eur': 0.0
+        }
 
 
 def get_binance_p2p_rates():
