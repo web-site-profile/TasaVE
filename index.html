@@ -40,14 +40,16 @@
     <meta name="geo.placename" content="Venezuela">
     <link rel="canonical" href="https://pjgs.github.io/TasaVE/">
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BJLELCBQ51"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-BJLELCBQ51');
-    </script>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-TJH8652K');</script>
+    <!-- End Google Tag Manager -->
 
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -107,6 +109,10 @@
 </head>
 
 <body class="min-h-screen bg-gray-50 dark:bg-[#0a0a0a] text-gray-900 dark:text-white transition-colors duration-300">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJH8652K" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <div class="container mx-auto px-4 py-8 max-w-4xl">
         <!-- Header -->
         <header class="flex justify-between items-center mb-8">
@@ -322,7 +328,7 @@
 
         <!-- Action Buttons -->
         <div class="flex flex-row justify-center gap-2 sm:gap-4 mb-8">
-            <button id="refreshBtn"
+            <button id="btn-actualizar"
                 class="px-3 py-2 sm:px-8 sm:py-3 bg-gradient-to-r from-[#00ff88] to-[#00cc6a] text-gray-900 font-semibold rounded-lg hover:shadow-lg transform hover:scale-105 transition-all duration-200 text-xs sm:text-base">
                 <span class="flex items-center justify-center gap-1 sm:gap-2">
                     <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -334,7 +340,7 @@
                     <span class="inline sm:hidden">Actualizar</span>
                 </span>
             </button>
-            <button id="clearBtn"
+            <button id="btn-limpiar"
                 class="px-3 py-2 sm:px-8 sm:py-3 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white font-semibold rounded-lg hover:shadow-lg transform hover:scale-105 transition-all duration-200 text-xs sm:text-base">
                 <span class="flex items-center justify-center gap-1 sm:gap-2">
                     <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -805,12 +811,12 @@
         });
 
         // Refresh button
-        document.getElementById('refreshBtn').addEventListener('click', () => {
+        document.getElementById('btn-actualizar').addEventListener('click', () => {
             loadExchangeRates();
         });
 
         // Clear button
-        document.getElementById('clearBtn').addEventListener('click', () => {
+        document.getElementById('btn-limpiar').addEventListener('click', () => {
             vesValue = 0;
             usdValue = 0;
             eurValue = 0;
