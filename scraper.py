@@ -21,18 +21,27 @@ if sys.platform == 'win32':
 
 def get_bcv_rates():
     """
-    Fetch BCV official rates for USD and EUR using pydolarvenezuela-api
+    Fetch BCV official rates for USD and EUR using ve.dolarapi.com
     Returns: dict with bcv_usd and bcv_eur
     """
     try:
-        url = "https://pydolarvenezuela-api.vercel.app/api/v1/dollar/page?page=bcv"
-        response = requests.get(url, timeout=10)
-        response.raise_for_status()
-        data = response.json()
+        url_usd = "https://ve.dolarapi.com/v1/dolares/oficial"
+        url_eur = "https://ve.dolarapi.com/v1/euros/oficial"
         
-        usd_rate = float(data['monitors']['usd']['price'])
-        eur_rate = float(data['monitors']['eur']['price'])
+        response_usd = requests.get(url_usd, timeout=10)
+        response_usd.raise_for_status()
+        data_usd = response_usd.json()
+        usd_rate = float(data_usd.get('promedio', 0.0))
         
+        response_eur = requests.get(url_eur, timeout=10)
+        response_eur.raise_for_status()
+        data_eur = response_eur.json()
+        eur_rate = float(data_eur.get('promedio', 0.0))
+        
+        # Fallback to zero if API returns zeroes for some reason
+        if usd_rate == 0.0 or eur_rate == 0.0:
+            print("Warning: Received 0.0 for one or more rates from dolarapi.com")
+            
         return {
             'bcv_usd': usd_rate,
             'bcv_eur': eur_rate

@@ -242,6 +242,34 @@
                     </div>
                 </div>
 
+                <!-- Custom Rate Input -->
+                <div class="md:col-span-2 mt-2">
+                    <label for="inputCustom" class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">
+                        Tasa Personalizada
+                        <span class="text-gray-400 dark:text-gray-500 font-normal ml-2">
+                            1 $ = Bs. <input type="number" step="0.01" id="inputCustomRateVal"
+                                class="w-24 px-2 py-1 ml-1 rounded bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 focus:border-[#00ff88]"
+                                placeholder="Tasa" value="60.50">
+                        </span>
+                    </label>
+                    <div class="relative">
+                        <span class="absolute left-3 top-3 text-gray-500">$</span>
+                        <input type="text" id="inputCustom"
+                            class="w-full pl-12 pr-12 py-3 rounded-lg bg-gray-100 dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 focus:border-[#00ff88]"
+                            placeholder="0.00">
+                        <button id="copyCustomBtn"
+                            class="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                            title="Copiar">
+                            <svg class="w-5 h-5 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
                 <!-- Separator Line -->
                 <div class="col-span-1 md:col-span-2 my-4 border-t border-gray-200 dark:border-gray-700"></div>
 
@@ -318,87 +346,7 @@
             </button>
         </div>
 
-        <!-- Calculadora Simple -->
-        <div
-            class="bg-white dark:bg-gray-900 rounded-2xl shadow-lg p-6 mb-8 border border-gray-200 dark:border-gray-800">
-            <h2 class="text-xl font-semibold mb-6 text-center">Calculadora</h2>
-            <div class="max-w-xs mx-auto">
-                <!-- Display -->
-                <input type="text" id="calcDisplay" readonly
-                    class="w-full p-4 mb-4 text-right rounded-lg bg-gray-100 dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 font-mono text-2xl text-gray-900 dark:text-white"
-                    value="0">
-
-                <!-- Calculator Grid -->
-                <div class="grid grid-cols-4 gap-2">
-                    <!-- Row 1: C, empty, empty, ÷ -->
-                    <button
-                        class="calc-btn calc-clear p-4 rounded-lg bg-gray-400 dark:bg-gray-800 hover:bg-gray-500 dark:hover:bg-gray-700 font-bold text-lg text-red-500"
-                        data-value="C">AC</button>
-                    <button
-                        class="calc-btn calc-backspace p-4 rounded-lg bg-gray-400 dark:bg-gray-800 hover:bg-gray-500 dark:hover:bg-gray-700 font-bold text-lg text-gray-900 dark:text-white"
-                        data-value="⌫">⌫</button>
-                    <button
-                        class="calc-btn calc-percent p-4 rounded-lg bg-gray-400 dark:bg-gray-800 hover:bg-gray-500 dark:hover:bg-gray-700 font-bold text-lg text-gray-900 dark:text-white"
-                        data-value="%">%</button>
-                    <button
-                        class="calc-btn calc-op p-4 rounded-lg bg-gray-400 dark:bg-gray-800 hover:bg-gray-500 dark:hover:bg-gray-700 font-bold text-lg text-[#00ff88]"
-                        data-value="÷">÷</button>
-
-                    <!-- Row 2: 7, 8, 9, × -->
-                    <button
-                        class="calc-btn calc-num p-4 rounded-lg bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 font-semibold text-lg"
-                        data-value="7">7</button>
-                    <button
-                        class="calc-btn calc-num p-4 rounded-lg bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 font-semibold text-lg"
-                        data-value="8">8</button>
-                    <button
-                        class="calc-btn calc-num p-4 rounded-lg bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 font-semibold text-lg"
-                        data-value="9">9</button>
-                    <button
-                        class="calc-btn calc-op p-4 rounded-lg bg-gray-400 dark:bg-gray-800 hover:bg-gray-500 dark:hover:bg-gray-700 font-bold text-lg text-[#00ff88]"
-                        data-value="×">×</button>
-
-                    <!-- Row 3: 4, 5, 6, - -->
-                    <button
-                        class="calc-btn calc-num p-4 rounded-lg bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 font-semibold text-lg"
-                        data-value="4">4</button>
-                    <button
-                        class="calc-btn calc-num p-4 rounded-lg bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 font-semibold text-lg"
-                        data-value="5">5</button>
-                    <button
-                        class="calc-btn calc-num p-4 rounded-lg bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 font-semibold text-lg"
-                        data-value="6">6</button>
-                    <button
-                        class="calc-btn calc-op p-4 rounded-lg bg-gray-400 dark:bg-gray-800 hover:bg-gray-500 dark:hover:bg-gray-700 font-bold text-lg text-[#00ff88]"
-                        data-value="-">-</button>
-
-                    <!-- Row 4: 1, 2, 3, + -->
-                    <button
-                        class="calc-btn calc-num p-4 rounded-lg bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 font-semibold text-lg"
-                        data-value="1">1</button>
-                    <button
-                        class="calc-btn calc-num p-4 rounded-lg bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 font-semibold text-lg"
-                        data-value="2">2</button>
-                    <button
-                        class="calc-btn calc-num p-4 rounded-lg bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 font-semibold text-lg"
-                        data-value="3">3</button>
-                    <button
-                        class="calc-btn calc-op p-4 rounded-lg bg-gray-400 dark:bg-gray-800 hover:bg-gray-500 dark:hover:bg-gray-700 font-bold text-lg text-[#00ff88]"
-                        data-value="+">+</button>
-
-                    <!-- Row 5: 0 (col-span-2), ., = -->
-                    <button
-                        class="calc-btn calc-num col-span-2 p-4 rounded-lg bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 font-semibold text-lg"
-                        data-value="0">0</button>
-                    <button
-                        class="calc-btn calc-num p-4 rounded-lg bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 font-semibold text-lg"
-                        data-value=".">.</button>
-                    <button
-                        class="calc-btn calc-equals p-4 rounded-lg bg-gray-400 dark:bg-gray-800 hover:bg-gray-500 dark:hover:bg-gray-700 font-bold text-lg text-[#ffd500]"
-                        data-value="=">=</button>
-                </div>
-            </div>
-        </div>
+        <!-- Calculadora Eliminada -->
 
         <!-- Important Information Section (Accordion) -->
         <div
@@ -605,6 +553,15 @@
         const inputUsd = document.getElementById('inputUsd');
         const inputEur = document.getElementById('inputEur');
         const inputUsdt = document.getElementById('inputUsdt');
+        const inputCustom = document.getElementById('inputCustom');
+        const inputCustomRateVal = document.getElementById('inputCustomRateVal');
+
+        let defaultCustomRate = 60.50;
+
+        function getCustomRate() {
+            let val = parseFloat(inputCustomRateVal.value);
+            return isNaN(val) || val <= 0 ? defaultCustomRate : val;
+        }
 
         function updateCalculator(sourceInput) {
             if (isUpdatingCalculator) return;
@@ -624,6 +581,9 @@
             } else if (sourceInput === 'usdt') {
                 const usdtAmount = parseDecimal(inputUsdt.value);
                 vesAmount = usdtAmount * exchangeRates.usdt_avg;
+            } else if (sourceInput === 'custom') {
+                const customAmount = parseDecimal(inputCustom.value);
+                vesAmount = customAmount * getCustomRate();
             }
 
             // Update all other fields
@@ -639,6 +599,9 @@
             if (sourceInput !== 'usdt' && exchangeRates.usdt_avg > 0) {
                 inputUsdt.value = formatDecimal(vesAmount / exchangeRates.usdt_avg);
             }
+            if (sourceInput !== 'custom') {
+                inputCustom.value = formatDecimal(vesAmount / getCustomRate());
+            }
 
             isUpdatingCalculator = false;
         }
@@ -648,6 +611,7 @@
         let usdValue = 0;
         let eurValue = 0;
         let usdtValue = 0;
+        let customValue = 0;
 
         // Format number as Venezuelan currency (1.234,56)
         function formatCurrencyVES(value) {
@@ -689,6 +653,7 @@
                 case 'usd': currentValue = usdValue; break;
                 case 'eur': currentValue = eurValue; break;
                 case 'usdt': currentValue = usdtValue; break;
+                case 'custom': currentValue = customValue; break;
             }
 
             // Add digit to the right (shift left and add new digit)
@@ -702,6 +667,7 @@
                 case 'usd': usdValue = currentValue; break;
                 case 'eur': eurValue = currentValue; break;
                 case 'usdt': usdtValue = currentValue; break;
+                case 'custom': customValue = currentValue; break;
             }
 
             // Update display
@@ -722,6 +688,7 @@
                     case 'usd': currentValue = usdValue; break;
                     case 'eur': currentValue = eurValue; break;
                     case 'usdt': currentValue = usdtValue; break;
+                    case 'custom': currentValue = customValue; break;
                 }
 
                 // Remove last digit (shift right)
@@ -732,6 +699,7 @@
                     case 'usd': usdValue = currentValue; break;
                     case 'eur': eurValue = currentValue; break;
                     case 'usdt': usdtValue = currentValue; break;
+                    case 'custom': customValue = currentValue; break;
                 }
 
                 updateInputDisplay(inputType);
@@ -754,6 +722,9 @@
                 case 'usdt':
                     inputUsdt.value = formatCurrencyUSD(usdtValue);
                     break;
+                case 'custom':
+                    inputCustom.value = formatCurrencyUSD(customValue);
+                    break;
             }
         }
 
@@ -773,6 +744,8 @@
                 vesAmount = (eurValue / 100) * exchangeRates.bcv_eur;
             } else if (sourceInput === 'usdt') {
                 vesAmount = (usdtValue / 100) * exchangeRates.usdt_avg;
+            } else if (sourceInput === 'custom') {
+                vesAmount = (customValue / 100) * getCustomRate();
             }
 
             // Update all other fields
@@ -792,6 +765,10 @@
                 usdtValue = Math.round((vesAmount / exchangeRates.usdt_avg) * 100);
                 inputUsdt.value = formatCurrencyUSD(usdtValue);
             }
+            if (sourceInput !== 'custom') {
+                customValue = Math.round((vesAmount / getCustomRate()) * 100);
+                inputCustom.value = formatCurrencyUSD(customValue);
+            }
 
             isUpdatingCalculator = false;
         }
@@ -801,6 +778,7 @@
         inputUsd.value = '0.00';
         inputEur.value = '0.00';
         inputUsdt.value = '0.00';
+        inputCustom.value = '0.00';
 
         // Add event listeners for calculator inputs
         inputVes.addEventListener('beforeinput', (e) => handleNumericInput(e, 'ves'));
@@ -815,6 +793,17 @@
         inputUsdt.addEventListener('beforeinput', (e) => handleNumericInput(e, 'usdt'));
         inputUsdt.addEventListener('keydown', (e) => handleKeyDown(e, 'usdt'));
 
+        inputCustom.addEventListener('beforeinput', (e) => handleNumericInput(e, 'custom'));
+        inputCustom.addEventListener('keydown', (e) => handleKeyDown(e, 'custom'));
+
+        // Listen to rate change
+        inputCustomRateVal.addEventListener('change', () => {
+            updateCalculatorFromValue('ves'); // Reprocess using current VES
+        });
+        inputCustomRateVal.addEventListener('keyup', () => {
+            updateCalculatorFromValue('ves');
+        });
+
         // Refresh button
         document.getElementById('refreshBtn').addEventListener('click', () => {
             loadExchangeRates();
@@ -826,10 +815,12 @@
             usdValue = 0;
             eurValue = 0;
             usdtValue = 0;
+            customValue = 0;
             inputVes.value = '0,00';
             inputUsd.value = '0.00';
             inputEur.value = '0.00';
             inputUsdt.value = '0.00';
+            inputCustom.value = '0.00';
         });
 
         // Copy buttons functionality
