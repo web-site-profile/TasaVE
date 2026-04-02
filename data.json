@@ -1,10 +1,10 @@
 {
   "bcv_usd": 473.9176,
   "bcv_eur": 545.94833602,
-  "usdt_buy": 654.18,
-  "usdt_sell": 668.1,
-  "usdt_avg": 661.14,
-  "last_update": "2026-04-01T19:34:59.584355",
+  "usdt_buy": 654.0,
+  "usdt_sell": 666.5,
+  "usdt_avg": 660.25,
+  "last_update": "2026-04-01T22:11:09.574231",
   "source": "BCV + Binance P2P",
   "error": null
 }
